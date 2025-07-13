@@ -1,0 +1,51 @@
+@ApplicationSettings.Api_HostAddress = http://localhost/api/settings
+
+GET {{ApplicationSettings.Api_HostAddress}}
+Accept: application/json
+
+###
+
+GET {{ApplicationSettings.Api_HostAddress}}/app.name
+Accept: application/json
+
+###
+
+GET {{ApplicationSettings.Api_HostAddress}}/category/General
+Accept: application/json
+
+###
+
+POST {{ApplicationSettings.Api_HostAddress}}
+Content-Type: application/json
+
+{
+  "key": "test.setting",
+  "value": "test value",
+  "description": "Test setting",
+  "category": "Test",
+  "isEncrypted": false
+}
+
+###
+
+PUT {{ApplicationSettings.Api_HostAddress}}/test.setting
+Content-Type: application/json
+
+{
+  "key": "test.setting",
+  "value": "updated test value",
+  "description": "Updated test setting",
+  "category": "Test",
+  "isEncrypted": false
+}
+
+###
+
+DELETE {{ApplicationSettings.Api_HostAddress}}/test.setting
+
+###
+
+GET http://localhost/health
+Accept: application/json
+
+###

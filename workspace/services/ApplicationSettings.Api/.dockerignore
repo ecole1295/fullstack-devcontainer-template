@@ -1,0 +1,30 @@
+# Dockerfile and .dockerignore
+Dockerfile*
+.dockerignore
+
+# .NET artifacts
+bin/
+obj/
+out/
+
+# Runtime artifacts
+*.log
+*.tmp
+
+# IDE and editor files
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md

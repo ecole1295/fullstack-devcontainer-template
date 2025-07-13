@@ -1,0 +1,86 @@
+{
+  "name": "Fullstack Development Template",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "8.0"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-json",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "angular.ng-template",
+        "johnpapa.angular2",
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "mongodb.mongodb-vscode",
+        "ms-vscode.vscode-eslint",
+        "ms-dotnettools.blazorwasm-companion",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "typescript.preferences.includePackageJsonAutoImports": "auto",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "files.autoSave": "onFocusChange",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "dotnet.defaultSolution": "disable"
+      }
+    }
+  },
+
+  "forwardPorts": [3000, 4200, 5000, 5001, 27017],
+  "portsAttributes": {
+    "3000": {
+      "label": "Angular Dev Server",
+      "onAutoForward": "notify"
+    },
+    "4200": {
+      "label": "Angular Alt Port",
+      "onAutoForward": "notify"
+    },
+    "5000": {
+      "label": ".NET HTTP",
+      "onAutoForward": "notify"
+    },
+    "5001": {
+      "label": ".NET HTTPS",
+      "onAutoForward": "notify"
+    },
+    "27017": {
+      "label": "MongoDB",
+      "onAutoForward": "silent"
+    }
+  },
+
+  "postCreateCommand": ".devcontainer/setup.sh",
+  "postStartCommand": "echo 'Development environment ready!'",
+
+  "remoteUser": "node",
+  "containerEnv": {
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "DOTNET_NOLOGO": "1"
+  }
+}
